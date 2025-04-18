@@ -14,6 +14,10 @@ def calculate_standard_score(scores, target_score):
     mean = np.mean(scores)  # 平均値
     std = np.std(scores, ddof=0)  # 標準偏差
     
+    # 標準偏差が0の場合（全員同じ点数）は偏差値を50とする
+    if std == 0:
+        return 50.0
+    
     # 偏差値の計算
     standard_score = 50 + 10 * (target_score - mean) / std
     return standard_score
