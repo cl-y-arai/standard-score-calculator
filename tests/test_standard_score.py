@@ -38,5 +38,11 @@ class TestStandardScore(unittest.TestCase):
         result = calculate_standard_score(scores, target_score)
         self.assertLess(result, 50.0)
 
+        # テストケース6: 全員0点の場合
+        scores = [0, 0, 0, 0, 0]
+        target_score = 0
+        result = calculate_standard_score(scores, target_score)
+        self.assertEqual(result, 50.0)  # 全員同じ点数なので偏差値は50
+
 if __name__ == '__main__':
     unittest.main() 
